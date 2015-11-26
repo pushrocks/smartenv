@@ -1,0 +1,32 @@
+{
+  "name": "smartenv",
+  "version": "0.0.0",
+  "description": "store things about your environment and let them travel across modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "(cd ts/compile && node compile.js) && (node test.js)",
+    "reinstall": "(rm -r node_modules && npm install)",
+    "release": "(git pull origin master && npm version patch && git push origin master && git checkout release && git merge master && git push origin release && git checkout master)",
+    "startdev": "(git checkout master && git pull origin master && npm install)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pushrocks/smartenv.git"
+  },
+  "keywords": [
+    "environment"
+  ],
+  "author": "Smart Coordination GmbH <office@push.rocks> (https://push.rocks)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pushrocks/smartenv/issues"
+  },
+  "homepage": "https://github.com/pushrocks/smartenv",
+  "dependencies": {
+    "beautylog": "^1.0.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.9.2"
+  }
+}
