@@ -28,4 +28,8 @@ smartenv.register = function (objectArg, paramName) {
 smartenv.get = function (keyName) {
     return smartenv.items[keyName];
 };
+smartenv.exportEnv = function () {
+};
+smartenv.importEnv = function () {
+};
 module.exports = smartenv;

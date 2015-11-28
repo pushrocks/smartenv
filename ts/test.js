@@ -9,5 +9,8 @@ smartenv.info.print();
 beautylog.log(smartenv.get("docit").key1);
 smartenv.makeGlobal();
 beautylog.log(global.smartenv.get("docit").key1);
+var key2 = "hello";
+smartenv.get("docit").key2 = key2;
+beautylog.log(global.smartenv.get("docit").key2);
 beautylog.success("Success!");
 //# sourceMappingURL=test.js.map
