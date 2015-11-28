@@ -10,9 +10,12 @@ smartenv.makeGlobal = function() {
 };
 
 
-smartenv.info = function() {
+smartenv.info = {};
+smartenv.info.node = {};
+smartenv.info.node.version = process.version;
+smartenv.info.print = function() {
     var pck = require("./package.json");
-    beautylog.log("node version is " + process.version + " and smartenv version is " + pck.version);
+    beautylog.log("node version is " + smartenv.info.node.version + " and smartenv version is " + pck.version);
     beautylog.log("the smartenv module currently holds the following properties:");
     console.log(Object.getOwnPropertyNames(smartenv.items).sort());
 };
