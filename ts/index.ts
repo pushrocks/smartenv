@@ -1,56 +1,31 @@
 /// <reference path="typings/tsd.d.ts" />
-/// <reference path="classes.ts" />
-var beautylog = require("beautylog")("os");
+/// <reference path="smartenv.classes.ts" />
+/// <reference path="smartenv.environment.ts" />
+/// <reference path="smartenv.objectstorage.ts" />
+var plugins = {
+    beautylog: require("beautylog")("os"),
+    _: require("lodash")
+}
 var smartenv:any = {}; //create smartenv object
-smartenv.items = {}; // create the items object to store items to.
+
+smartenv.getEnv = SmartenvEnvironment.init();
+smartenv.obs = SmartenvObjectStorage.init();
+
 
 /* ----------------------------------------- *
- * ----- Environment ----------------------- *
+ * ----- print info ------------------------ *
  * ----------------------------------------- */
-var environment:Environment;
-var setEnvironment = function() {
-    var localRunTimeEnv = "undefined";
-    var localUserAgent = "undefined";
-    if (typeof window !== 'undefined') {
-        localRunTimeEnv = 'browser';
-        localUserAgent = navigator.userAgent;
-    } else if (typeof process !== 'undefined') {
-        localRunTimeEnv = 'node';
-    }
-    environment = new Environment(localRunTimeEnv,localUserAgent);
-};
-setEnvironment();
-
-
-smartenv.getEnv = function() {
-    return environment;
-};
-
-/* ----------------------------------------- *
- * ----- Info vars ------------------------- *
- * ----------------------------------------- */
-
-
 smartenv.printEnv = function() {
-    if (environment.isNode) {
+    if (smartenv.getEnv().isNode) {
         var smartenvVersion = require("./package.json").version;
-        beautylog.log("node version is " + environment.nodeVersion + " and smartenv version is " + smartenvVersion);
+        plugins.beautylog.log("node version is " + smartenv.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
     } else {
-        beautylog.log("browser is " + environment.userAgent)
+        plugins.beautylog.log("browser is " + smartenv.getEnv().userAgent)
     }
-    beautylog.log("the smartenv registration store currently holds the following properties:");
-    console.log(Object.getOwnPropertyNames(smartenv.items).sort());
+    plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
+    console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete).sort());
 };
 
-smartenv.register = function(objectArg,paramName = "undefined") {
-    if (paramName == "undefined"){
-        beautylog.error("paramName is undefined");
-        return;
-    }
-    smartenv.items[paramName] = objectArg;
-};
-smartenv.get = function(keyName) {
-    return smartenv.items[keyName];
-};
+
 
 module.exports = smartenv;

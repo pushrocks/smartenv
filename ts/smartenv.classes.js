@@ -18,4 +18,4 @@ var Environment = (function () {
     ;
     return Environment;
 })();
-//# sourceMappingURL=classes.js.map
+//# sourceMappingURL=smartenv.classes.js.map

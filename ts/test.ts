@@ -4,13 +4,13 @@ var beautylog = require("beautylog")("os");
 beautylog.info("Now testing the smartenv module");
 smartenv.printEnv();
 beautylog.info("Now testing the smartenv module");
-smartenv.register({key1:"Peter"},"docit");
+smartenv.obs.addItem({key1:"Peter"},"docit");
 smartenv.printEnv();
-beautylog.log(smartenv.get("docit").key1);
-beautylog.log(smartenv.get("docit").key1);
+beautylog.log(smartenv.obs.getItem("docit").key1);
+beautylog.log(smartenv.obs.getItem("docit").key1);
 
 var key2 = "hello";
-smartenv.get("docit").key2 = key2;
-beautylog.log(smartenv.get("docit").key2);
+smartenv.obs.getItem("docit").key2 = key2;
+beautylog.log(smartenv.obs.getItem("docit").key2);
 
 beautylog.success("Success!");

@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/pushrocks/smartenv",
   "dependencies": {
-    "beautylog": "^1.0.4"
+    "beautylog": "^1.0.4",
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
