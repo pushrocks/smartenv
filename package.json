@@ -1,6 +1,6 @@
 {
   "name": "smartenv",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "store things about your environment and let them travel across modules",
   "main": "index.js",
   "scripts": {
