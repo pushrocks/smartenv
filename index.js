@@ -1,20 +1,60 @@
+/// <reference path="index.ts" />
+var Environment = (function () {
+    function Environment(runtimeEnvArg, userAgentArg) {
+        if (userAgentArg === void 0) { userAgentArg = "undefined"; }
+        this.runtimeEnv = runtimeEnvArg;
+        this.userAgent = userAgentArg;
+        if (runtimeEnvArg == "node") {
+            this.isBrowser = false;
+            this.isNode = true;
+            this.nodeVersion = process.version;
+        }
+        else {
+            this.isBrowser = true;
+            this.isNode = true;
+            this.nodeVersion = "undefined";
+        }
+    }
+    ;
+    return Environment;
+})();
 /// <reference path="typings/tsd.d.ts" />
+/// <reference path="classes.ts" />
 var beautylog = require("beautylog")("os");
-var addToGlobal = function (objectArg, paramName) {
-    global[paramName] = objectArg;
-};
 var smartenv = {}; //create smartenv object
 smartenv.items = {}; // create the items object to store items to.
-smartenv.makeGlobal = function () {
-    addToGlobal(smartenv, "smartenv"); //add object smartenv as global["smartenv"]
+/* ----------------------------------------- *
+ * ----- Environment ----------------------- *
+ * ----------------------------------------- */
+var environment;
+var setEnvironment = function () {
+    var localRunTimeEnv = "undefined";
+    var localUserAgent = "undefined";
+    if (typeof window !== 'undefined') {
+        localRunTimeEnv = 'browser';
+        localUserAgent = navigator.userAgent;
+    }
+    else if (typeof process !== 'undefined') {
+        localRunTimeEnv = 'node';
+    }
+    environment = new Environment(localRunTimeEnv, localUserAgent);
 };
-smartenv.info = {};
-smartenv.info.node = {};
-smartenv.info.node.version = process.version;
-smartenv.info.print = function () {
-    var pck = require("./package.json");
-    beautylog.log("node version is " + smartenv.info.node.version + " and smartenv version is " + pck.version);
-    beautylog.log("the smartenv module currently holds the following properties:");
+setEnvironment();
+smartenv.getEnv = function () {
+    return environment;
+};
+/* ----------------------------------------- *
+ * ----- Info vars ------------------------- *
+ * ----------------------------------------- */
+smartenv.printEnv = function () {
+    if (environment.isNode) {
+        var smartenvVersion = require("./package.json").version;
+        beautylog.log("node version is " + environment.nodeVersion + " and smartenv version is " + smartenvVersion);
+    }
+    else {
+        beautylog.log("browser is " + environment.userAgent);
+    }
+    beautylog.log("the smartenv registration store currently holds the following properties:");
     console.log(Object.getOwnPropertyNames(smartenv.items).sort());
 };
 smartenv.register = function (objectArg, paramName) {
@@ -27,9 +67,5 @@ smartenv.register = function (objectArg, paramName) {
 };
 smartenv.get = function (keyName) {
     return smartenv.items[keyName];
-};
-smartenv.exportEnv = function () {
-};
-smartenv.importEnv = function () {
 };
 module.exports = smartenv;
