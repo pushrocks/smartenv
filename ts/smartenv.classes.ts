@@ -2,7 +2,7 @@
 class Environment {
     public runtimeEnv:string;
     public userAgent:string;
-    public nodeVersion;
+    public nodeVersion:string;
     public isBrowser:boolean;
     public isNode:boolean;
     constructor(runtimeEnvArg,userAgentArg = "undefined") {
