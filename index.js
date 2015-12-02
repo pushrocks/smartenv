@@ -60,7 +60,7 @@ var SmartenvEnvironment;
             plugins.beautylog.log("browser is " + this.getEnv().userAgent);
         }
         plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
-        console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete()));
+        console.log(Object.getOwnPropertyNames(smartenv.obs.getAll()));
     };
     SmartenvEnvironment.init = function (objectArg) {
         objectArg.getEnv = getEnv;
@@ -73,7 +73,7 @@ var SmartenvObjectStorage;
     function init() {
         var obs = {};
         var obsItems = {};
-        obs.addItem = function (objectArg, paramName) {
+        obs.add = function (objectArg, paramName) {
             if (paramName === void 0) { paramName = "undefined"; }
             if (paramName == "undefined") {
                 plugins.beautylog.error("paramName is undefined");
@@ -81,10 +81,10 @@ var SmartenvObjectStorage;
             }
             obsItems[paramName] = objectArg;
         };
-        obs.getItem = function (keyName) {
+        obs.get = function (keyName) {
             return obsItems[keyName];
         };
-        obs.getComplete = function () {
+        obs.getAll = function () {
             return obsItems;
         };
         obs.addComplete = function (itemsArg) {

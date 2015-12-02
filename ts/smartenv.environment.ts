@@ -39,7 +39,7 @@ module SmartenvEnvironment {
             plugins.beautylog.log("browser is " + this.getEnv().userAgent)
         }
         plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
-        console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete()));
+        console.log(Object.getOwnPropertyNames(smartenv.obs.getAll()));
     }
 
     export var init = function(objectArg) {
