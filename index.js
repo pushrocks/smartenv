@@ -24,25 +24,48 @@ var Environment = (function () {
  */
 var SmartenvEnvironment;
 (function (SmartenvEnvironment) {
-    function init() {
-        var environment;
-        (function () {
-            var localRunTimeEnv = "undefined";
-            var localUserAgent = "undefined";
-            if (typeof window !== 'undefined') {
-                localRunTimeEnv = 'browser';
-                localUserAgent = navigator.userAgent;
-            }
-            else if (typeof process !== 'undefined') {
-                localRunTimeEnv = 'node';
-            }
-            environment = new Environment(localRunTimeEnv, localUserAgent);
-        })();
-        return function () {
-            return environment;
-        };
-    }
-    SmartenvEnvironment.init = init;
+    var environment;
+    var envDetermined = false;
+    /**
+     * returns the environment
+     * @returns {Environment}
+     */
+    var getEnv = function () {
+        if (!envDetermined) {
+            (function () {
+                var localRunTimeEnv = "undefined";
+                var localUserAgent = "undefined";
+                if (typeof window !== 'undefined') {
+                    localRunTimeEnv = 'browser';
+                    localUserAgent = navigator.userAgent;
+                }
+                else if (typeof process !== 'undefined') {
+                    localRunTimeEnv = 'node';
+                }
+                environment = new Environment(localRunTimeEnv, localUserAgent);
+            })();
+        }
+        ;
+        return environment;
+    };
+    /**
+     * prints the environment to console
+     */
+    var printEnv = function () {
+        if (this.getEnv().isNode) {
+            var smartenvVersion = require("./package.json").version;
+            plugins.beautylog.log("node version is " + this.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
+        }
+        else {
+            plugins.beautylog.log("browser is " + this.getEnv().userAgent);
+        }
+        plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
+        console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete()));
+    };
+    SmartenvEnvironment.init = function (objectArg) {
+        objectArg.getEnv = getEnv;
+        objectArg.printEnv = printEnv;
+    };
 })(SmartenvEnvironment || (SmartenvEnvironment = {}));
 /// <reference path="index.ts" />
 var SmartenvObjectStorage;
@@ -81,20 +104,6 @@ var plugins = {
     _: require("lodash")
 };
 var smartenv = {}; //create smartenv object
-smartenv.getEnv = SmartenvEnvironment.init();
+SmartenvEnvironment.init(smartenv);
 smartenv.obs = SmartenvObjectStorage.init();
-/* ----------------------------------------- *
- * ----- print info ------------------------ *
- * ----------------------------------------- */
-smartenv.printEnv = function () {
-    if (smartenv.getEnv().isNode) {
-        var smartenvVersion = require("./package.json").version;
-        plugins.beautylog.log("node version is " + smartenv.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
-    }
-    else {
-        plugins.beautylog.log("browser is " + smartenv.getEnv().userAgent);
-    }
-    plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
-    console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete).sort());
-};
 module.exports = smartenv;

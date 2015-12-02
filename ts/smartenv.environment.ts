@@ -3,23 +3,47 @@
  * Deals with the environment the current JS script is running in.
  */
 module SmartenvEnvironment {
-    export function init(){
-        var environment:Environment;
-        (function() {
-            var localRunTimeEnv = "undefined";
-            var localUserAgent = "undefined";
-            if (typeof window !== 'undefined') {
-                localRunTimeEnv = 'browser';
-                localUserAgent = navigator.userAgent;
-            } else if (typeof process !== 'undefined') {
-                localRunTimeEnv = 'node';
-            }
-            environment = new Environment(localRunTimeEnv,localUserAgent);
-        })();
 
+    var environment:Environment;
+    var envDetermined:boolean = false;
 
-        return function() {
-            return environment;
+    /**
+     * returns the environment
+     * @returns {Environment}
+     */
+    var getEnv = function(){
+        if (!envDetermined) {
+            (function() {
+                var localRunTimeEnv = "undefined";
+                var localUserAgent = "undefined";
+                if (typeof window !== 'undefined') {
+                    localRunTimeEnv = 'browser';
+                    localUserAgent = navigator.userAgent;
+                } else if (typeof process !== 'undefined') {
+                    localRunTimeEnv = 'node';
+                }
+                environment = new Environment(localRunTimeEnv,localUserAgent);
+            })();
         };
+        return environment;
+    };
+
+    /**
+     * prints the environment to console
+     */
+    var  printEnv = function() {
+        if (this.getEnv().isNode) {
+            var smartenvVersion = require("./package.json").version;
+            plugins.beautylog.log("node version is " + this.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
+        } else {
+            plugins.beautylog.log("browser is " + this.getEnv().userAgent)
+        }
+        plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
+        console.log(Object.getOwnPropertyNames(smartenv.obs.getComplete()));
+    }
+
+    export var init = function(objectArg) {
+        objectArg.getEnv = getEnv;
+        objectArg.printEnv = printEnv;
     }
 }
