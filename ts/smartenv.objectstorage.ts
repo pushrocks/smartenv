@@ -3,12 +3,15 @@ module SmartenvObjectStorage {
     export function init() {
         var obs:any = {};
         var obsItems:any = {};
-        obs.add = function(objectArg,paramName = "undefined") {
-            if (paramName == "undefined"){
+        obs.add = function(paramNameArg = "undefined",objectArg = "undefined") {
+            if (paramNameArg == "undefined"){
                 plugins.beautylog.error("paramName is undefined");
                 return;
             }
-            obsItems[paramName] = objectArg;
+            if (objectArg == "undefined"){
+                plugins.beautylog.error("objectArg is undefined");
+            }
+            obsItems[paramNameArg] = objectArg;
         };
         obs.get = function(keyName) {
             return obsItems[keyName];

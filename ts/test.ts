@@ -4,7 +4,7 @@ var beautylog = require("beautylog")("os");
 beautylog.info("Now testing the smartenv module");
 smartenv.printEnv();
 beautylog.info("Now testing the smartenv module");
-smartenv.obs.add({key1:"Peter"},"docit");
+smartenv.obs.add("docit",{key1:"Peter"});
 smartenv.printEnv();
 beautylog.log(smartenv.obs.get("docit").key1);
 beautylog.log(smartenv.obs.get("docit").key1);

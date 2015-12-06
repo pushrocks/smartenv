@@ -73,13 +73,17 @@ var SmartenvObjectStorage;
     function init() {
         var obs = {};
         var obsItems = {};
-        obs.add = function (objectArg, paramName) {
-            if (paramName === void 0) { paramName = "undefined"; }
-            if (paramName == "undefined") {
+        obs.add = function (paramNameArg, objectArg) {
+            if (paramNameArg === void 0) { paramNameArg = "undefined"; }
+            if (objectArg === void 0) { objectArg = "undefined"; }
+            if (paramNameArg == "undefined") {
                 plugins.beautylog.error("paramName is undefined");
                 return;
             }
-            obsItems[paramName] = objectArg;
+            if (objectArg == "undefined") {
+                plugins.beautylog.error("objectArg is undefined");
+            }
+            obsItems[paramNameArg] = objectArg;
         };
         obs.get = function (keyName) {
             return obsItems[keyName];
