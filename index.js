@@ -71,30 +71,48 @@ var SmartenvEnvironment;
 var SmartenvObjectStorage;
 (function (SmartenvObjectStorage) {
     function init() {
-        var obs = {};
+        var obs = {
+            add: function (paramNameArg, objectArg) {
+                if (paramNameArg === void 0) { paramNameArg = "undefined"; }
+                if (objectArg === void 0) { objectArg = "undefined"; }
+                if (paramNameArg == "undefined") {
+                    plugins.beautylog.error("paramName is undefined");
+                    return;
+                }
+                if (objectArg == "undefined") {
+                    plugins.beautylog.error("objectArg is undefined");
+                }
+                if (typeof obsItems[paramNameArg] === "undefined") {
+                    obsItems[paramNameArg] = objectArg;
+                }
+                else {
+                    plugins.beautylog.error("object is already present, so add operation has failed.");
+                }
+                return obsItems[paramNameArg];
+            },
+            replace: function (paramNameArg, objectArg) {
+                obsItems[paramNameArg] = objectArg;
+            },
+            merge: function (paramNameArg, objectArg) {
+                if (!(typeof obsItems[paramNameArg] === "undefined")) {
+                    obsItems[paramNameArg] = plugins._.assign(obsItems[paramNameArg], objectArg);
+                }
+                else {
+                    plugins.beautylog.error("object is not present, so there is nothing to merge");
+                }
+            },
+            get: function (keyName) {
+                return obsItems[keyName];
+            },
+            getAll: function () {
+                return obsItems;
+            },
+            addComplete: function (itemsArg) {
+                obsItems = plugins._.assign(obsItems, itemsArg);
+                return obsItems;
+            }
+        };
         var obsItems = {};
-        obs.add = function (paramNameArg, objectArg) {
-            if (paramNameArg === void 0) { paramNameArg = "undefined"; }
-            if (objectArg === void 0) { objectArg = "undefined"; }
-            if (paramNameArg == "undefined") {
-                plugins.beautylog.error("paramName is undefined");
-                return;
-            }
-            if (objectArg == "undefined") {
-                plugins.beautylog.error("objectArg is undefined");
-            }
-            obsItems[paramNameArg] = objectArg;
-        };
-        obs.get = function (keyName) {
-            return obsItems[keyName];
-        };
-        obs.getAll = function () {
-            return obsItems;
-        };
-        obs.addComplete = function (itemsArg) {
-            obsItems = plugins._.assign(obsItems, itemsArg);
-            return obsItems;
-        };
         return obs;
     }
     SmartenvObjectStorage.init = init;
