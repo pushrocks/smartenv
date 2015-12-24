@@ -16,14 +16,15 @@ module SmartenvEnvironment {
             (function() {
                 var localRunTimeEnv = "undefined";
                 var localUserAgent = "undefined";
-                if (typeof window !== 'undefined') {
+                if (typeof window !== "undefined") {
                     localRunTimeEnv = 'browser';
                     localUserAgent = navigator.userAgent;
-                } else if (typeof process !== 'undefined') {
+                } else if (typeof process !== "undefined") {
                     localRunTimeEnv = 'node';
                 }
                 environment = new Environment(localRunTimeEnv,localUserAgent);
             })();
+            envDetermined = true; // ensure code above only runs once
         };
         return environment;
     };
@@ -33,10 +34,12 @@ module SmartenvEnvironment {
      */
     var  printEnv = function() {
         if (this.getEnv().isNode) {
+            plugins.beautylog.ok("running on NODE");
             var smartenvVersion = require("./package.json").version;
             plugins.beautylog.log("node version is " + this.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
         } else {
-            plugins.beautylog.log("browser is " + this.getEnv().userAgent)
+            plugins.beautylog.ok("running on BROWSER");
+            plugins.beautylog.log("browser is " + this.getEnv().userAgent);
         }
         plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
         console.log(Object.getOwnPropertyNames(smartenv.obs.getAll()));

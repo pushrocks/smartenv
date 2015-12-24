@@ -5,16 +5,16 @@ class Environment {
     public nodeVersion:string;
     public isBrowser:boolean;
     public isNode:boolean;
-    constructor(runtimeEnvArg,userAgentArg = "undefined") {
+    constructor(runtimeEnvArg:string,userAgentArg:string = "undefined") {
         this.runtimeEnv = runtimeEnvArg;
         this.userAgent = userAgentArg;
         if(runtimeEnvArg == "node"){
             this.isBrowser = false;
             this.isNode = true;
             this.nodeVersion = process.version;
-        } else {
+        } else if (runtimeEnvArg == "browser") {
             this.isBrowser = true;
-            this.isNode = true;
+            this.isNode = false;
             this.nodeVersion = "undefined";
         }
     };

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "(cd ts/compile && node compile.js) && (node test.js)",
+    "testbrowser": "(npm test) && (node testbrowser.js)",
     "reinstall": "(rm -r node_modules && npm install)",
     "release": "(git pull origin master && npm version patch && git push origin master && git checkout release && git merge master && git push origin release && git checkout master)",
     "update": "(git checkout master && git pull origin master && npm install)",
@@ -24,11 +25,13 @@
   },
   "homepage": "https://github.com/pushrocks/smartenv",
   "dependencies": {
-    "beautylog": "^1.0.6",
+    "beautylog": "^1.0.7",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
+    "easyserve": "0.0.4",
     "gulp": "^3.9.0",
+    "gulp-browser": "0.0.18",
     "gulp-typescript": "^2.10.0"
   }
 }

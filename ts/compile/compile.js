@@ -21,7 +21,16 @@ gulp.task('compileTestTS', function() {
 	return stream;
 });
 
-gulp.task('default',['compileTS','compileTestTS'], function() {
+gulp.task('compileTestBrowserTS', function() {
+	var stream = gulp.src('../testbrowser.ts')
+			.pipe(gulpTypescript({
+				out: "testbrowser.js"
+			}))
+			.pipe(gulp.dest("../../"));
+	return stream;
+});
+
+gulp.task('default',['compileTS','compileTestTS','compileTestBrowserTS'], function() {
 	bl.success('Typescript compiled');
 });
 
