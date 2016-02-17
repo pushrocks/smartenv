@@ -2,14 +2,10 @@
   "name": "smartenv",
   "version": "0.0.15",
   "description": "store things about your environment and let them travel across modules",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "(cd ts/compile && node compile.js) && (node test.js)",
-    "testbrowser": "(npm test) && (node testbrowser.js)",
-    "reinstall": "(rm -r node_modules && npm install)",
-    "release": "(git pull origin master && npm version patch && git push origin master && git checkout release && git merge master && git push origin release && git checkout master)",
-    "update": "(git checkout master && git pull origin master && npm install)",
-    "upgrade": "(npm run update) && (ncu upgradeAll && npm install)"
+    "test": "(npmts)",
+    "testbrowser": "(npm test) && (node testbrowser.js)"
   },
   "repository": {
     "type": "git",
@@ -25,13 +21,13 @@
   },
   "homepage": "https://github.com/pushrocks/smartenv",
   "dependencies": {
-    "beautylog": "^1.0.7",
-    "lodash": "^3.10.1"
+    "beautylog": "^2.1.1",
+    "lodash": "^4.5.0"
   },
   "devDependencies": {
-    "easyserve": "0.0.4",
-    "gulp": "^3.9.0",
-    "gulp-browser": "0.0.18",
-    "gulp-typescript": "^2.10.0"
+    "easyserve": "0.0.5",
+    "gulp": "^3.9.1",
+    "gulp-browser": "1.0.10",
+    "npmts": "^3.0.1"
   }
 }

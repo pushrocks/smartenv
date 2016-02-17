@@ -1,16 +1,10 @@
-/// <reference path="typings/tsd.d.ts" />
-/// <reference path="smartenv.classes.ts" />
-/// <reference path="smartenv.environment.ts" />
-/// <reference path="smartenv.objectstorage.ts" />
-var plugins = {
-    beautylog: require("beautylog")("os"),
-    _: require("lodash")
-}
+/// <reference path="typings/main.d.ts" />
+
+import SmartenvEnvironment = require("./smartenv.environment");
+import SmartenvObjectStorage = require("./smartenv.objectstorage");
+
 var smartenv:any = {}; //create smartenv object
-
 SmartenvEnvironment.init(smartenv);
-smartenv.obs = SmartenvObjectStorage.init();
+smartenv.obs = SmartenvObjectStorage.obs;
 
-
-
-module.exports = smartenv;
+export = smartenv;

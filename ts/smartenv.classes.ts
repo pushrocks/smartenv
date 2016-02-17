@@ -1,5 +1,5 @@
-/// <reference path="index.ts" />
-class Environment {
+/// <reference path="typings/main.d.ts" />
+export class Environment {
     public runtimeEnv:string;
     public userAgent:string;
     public nodeVersion:string;

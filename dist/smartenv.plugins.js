@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+/// <reference path="typings/main.d.ts" />
+exports.beautylog = require("beautylog");
+exports._ = require("lodash");
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNtYXJ0ZW52LnBsdWdpbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsMENBQTBDO0FBQy9CLGlCQUFTLEdBQUcsT0FBTyxDQUFDLFdBQVcsQ0FBQyxDQUFDO0FBQ2pDLFNBQUMsR0FBRyxPQUFPLENBQUMsUUFBUSxDQUFDLENBQUMiLCJmaWxlIjoic21hcnRlbnYucGx1Z2lucy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vLyA8cmVmZXJlbmNlIHBhdGg9XCJ0eXBpbmdzL21haW4uZC50c1wiIC8+XG5leHBvcnQgdmFyIGJlYXV0eWxvZyA9IHJlcXVpcmUoXCJiZWF1dHlsb2dcIik7XG5leHBvcnQgdmFyIF8gPSByZXF1aXJlKFwibG9kYXNoXCIpOyJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

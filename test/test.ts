@@ -1,6 +1,6 @@
-/// <reference path="typings/tsd.d.ts" />
-var smartenv = require("./index.js");
-var beautylog = require("beautylog")("os");
+/// <reference path="../ts/typings/main.d.ts" />
+var smartenv = require("../dist/index.js");
+var beautylog = require("beautylog");
 beautylog.info("Now testing the smartenv module");
 smartenv.printEnv();
 beautylog.info("Now testing the smartenv module");
