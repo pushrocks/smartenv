@@ -8,5 +8,6 @@ npm-debug.log
 
 ts/*.js
 ts/*.js.map
+ts/typings/
 
 test/browser/browserified/
