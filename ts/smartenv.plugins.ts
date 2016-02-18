@@ -1,3 +1,7 @@
 /// <reference path="typings/main.d.ts" />
-export var beautylog = require("beautylog");
-export var _ = require("lodash");
+var plugins = {
+    beautylog: require("beautylog"),
+    _: require("lodash")
+};
+
+export = plugins;
