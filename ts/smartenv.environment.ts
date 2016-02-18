@@ -3,11 +3,11 @@
  * Deals with the environment the current JS script is running in.
  */
 import plugins = require("./smartenv.plugins");
-import SmartenvClasses = require("./smartenv.classes");
-import SmartenvObjectStorage = require("./smartenv.objectstorage");
+import classes = require("./smartenv.classes");
+import objectStorage = require("./smartenv.objectstorage");
 
 
-var environment:SmartenvClasses.Environment;
+var environment:classes.Environment;
 var envDetermined:boolean = false;
 
 /**
@@ -25,7 +25,7 @@ var getEnv = function(){
             } else if (typeof process !== "undefined") {
                 localRunTimeEnv = 'node';
             }
-            environment = new SmartenvClasses.Environment(localRunTimeEnv,localUserAgent);
+            environment = new classes.Environment(localRunTimeEnv,localUserAgent);
         })();
         envDetermined = true; // ensure code above only runs once
     };
@@ -45,7 +45,7 @@ var  printEnv = function() {
         plugins.beautylog.log("browser is " + this.getEnv().userAgent);
     }
     plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
-    console.log(Object.getOwnPropertyNames(SmartenvObjectStorage.obs.getAll()));
+    console.log(Object.getOwnPropertyNames(objectStorage.obs.getAll()));
 };
 
 export var init = function(objectArg) {
