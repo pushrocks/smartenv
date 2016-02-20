@@ -16,17 +16,7 @@ var envDetermined:boolean = false;
  */
 var getEnv = function(){
     if (!envDetermined) {
-        (function() {
-            var localRunTimeEnv = "undefined";
-            var localUserAgent = "undefined";
-            if (typeof window !== "undefined") {
-                localRunTimeEnv = 'browser';
-                localUserAgent = navigator.userAgent;
-            } else if (typeof process !== "undefined") {
-                localRunTimeEnv = 'node';
-            }
-            environment = new classes.Environment(localRunTimeEnv,localUserAgent);
-        })();
+        environment = new classes.Environment();
         envDetermined = true; // ensure code above only runs once
     };
     return environment;
