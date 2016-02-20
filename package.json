@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/pushrocks/smartenv",
   "dependencies": {
-    "beautylog": "^3.0.0",
+    "beautylog": "^3.0.1",
     "lodash": "^4.5.0",
     "q": "^1.4.1"
   },
