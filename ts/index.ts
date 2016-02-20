@@ -4,7 +4,8 @@ import environment = require("./smartenv.environment");
 import objectstorage = require("./smartenv.objectstorage");
 
 var smartenv:any = {}; //create smartenv object
-environment.init(smartenv);
+smartenv.getEnv = environment.getEnv;
+smartenv.printEnv = environment.printEnv;
 smartenv.obs = objectstorage.obs;
 
 export = smartenv;

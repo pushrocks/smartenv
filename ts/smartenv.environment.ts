@@ -14,7 +14,7 @@ var envDetermined:boolean = false;
  * returns the environment
  * @returns {Environment}
  */
-var getEnv = function(){
+export var getEnv = function(){
     if (!envDetermined) {
         environment = new classes.Environment();
         envDetermined = true; // ensure code above only runs once
@@ -25,7 +25,7 @@ var getEnv = function(){
 /**
  * prints the environment to console
  */
-var  printEnv = function() {
+export var  printEnv = function() {
     if (this.getEnv().isNode) {
         plugins.beautylog.ok("running on NODE");
         var smartenvVersion = require("../package.json").version;
@@ -36,9 +36,4 @@ var  printEnv = function() {
     }
     plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
     console.log(Object.getOwnPropertyNames(objectStorage.obs.getAll()));
-};
-
-export var init = function(objectArg) {
-    objectArg.getEnv = getEnv;
-    objectArg.printEnv = printEnv;
 };

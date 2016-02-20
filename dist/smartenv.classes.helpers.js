@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /// <reference path="typings/main.d.ts" />
 exports.getEnvString = function () {
     if (typeof window !== "undefined") {
