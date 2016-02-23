@@ -27,13 +27,13 @@ export var getEnv = function(){
  */
 export var  printEnv = function() {
     if (this.getEnv().isNode) {
-        plugins.beautylog.ok("running on NODE");
+        console.log("running on NODE");
         var smartenvVersion = require("../package.json").version;
-        plugins.beautylog.log("node version is " + this.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
+        console.log("node version is " + this.getEnv().nodeVersion + " and smartenv version is " + smartenvVersion);
     } else {
-        plugins.beautylog.ok("running on BROWSER");
-        plugins.beautylog.log("browser is " + this.getEnv().userAgent);
+        console.log("running on BROWSER");
+        console.log("browser is " + this.getEnv().userAgent);
     }
-    plugins.beautylog.log("the smartenv registration store currently holds the following properties:");
+    console.log("the smartenv registration store currently holds the following properties:");
     console.log(Object.getOwnPropertyNames(objectStorage.obs.getAll()));
 };
