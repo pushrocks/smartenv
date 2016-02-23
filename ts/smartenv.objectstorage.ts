@@ -1,19 +1,18 @@
 /// <reference path="typings/main.d.ts" />
 import plugins = require("./smartenv.plugins");
-var beautylog = require("beautylog");
 export var obs:any = {
     add: function(paramNameArg = "undefined",objectArg = "undefined") {
         if (paramNameArg == "undefined"){
-            beautylog.error("paramName is undefined");
+            console.log("paramName is undefined");
             return;
         }
         if (objectArg == "undefined"){
-            beautylog.error("objectArg is undefined");
+            console.log("objectArg is undefined");
         }
         if (typeof obsItems[paramNameArg] === "undefined"){
             obsItems[paramNameArg] = objectArg;
         } else {
-            beautylog.error("object is already present, so add operation has failed.");
+            console.log("object is already present, so add operation has failed.");
         }
         return obsItems[paramNameArg];
     },
@@ -24,7 +23,7 @@ export var obs:any = {
         if(!(typeof obsItems[paramNameArg] === "undefined")){
             obsItems[paramNameArg] = plugins._.assign(obsItems[paramNameArg],objectArg);
         } else {
-            beautylog.error("object is not present, so there is nothing to merge");
+            console.log("object is not present, so there is nothing to merge");
         }
     },
     get: function(keyName) {
