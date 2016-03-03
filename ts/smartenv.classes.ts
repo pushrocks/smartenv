@@ -9,6 +9,7 @@ export class Environment {
     nodeVersion:string;
     isCI:boolean;
     isTravis:boolean;
+    isC9:boolean;
     constructor() {
         this.runtimeEnv = helpers.getEnvString();
         this.isBrowser = helpers.isBrowser();
@@ -17,5 +18,6 @@ export class Environment {
         this.nodeVersion = helpers.getNodeVersion();
         this.isCI = helpers.isCI();
         this.isTravis = helpers.isTravis();
+        this.isC9 = helpers.isC9();
     };
 }

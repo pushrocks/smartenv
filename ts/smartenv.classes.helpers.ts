@@ -17,11 +17,7 @@ export var getUserAgentString = function():string{
 };
 
 export var isNode = function():boolean {
-    if (getEnvString() === "node"){
-        return true;
-    } else {
-        return false;
-    }
+    return getEnvString() === "node"
 };
 
 export var getNodeVersion = function():string {
@@ -38,6 +34,14 @@ export var isCI = function(){
     } else {
         return false;
     };
+};
+
+export var isC9 = function(){
+    if (process.env.C9_HOSTNAME){
+        return true;
+    } else {
+        return false;
+    }
 };
 
 export var isTravis = function(){
