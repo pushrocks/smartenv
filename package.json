@@ -25,10 +25,10 @@
     "q": "^1.4.1"
   },
   "devDependencies": {
-    "beautylog": "3.1.2",
+    "beautylog": "4.1.2",
     "easyserve": "0.0.5",
     "gulp": "^3.9.1",
-    "gulp-browser": "1.2.2",
-    "npmts": "4.0.2"
+    "gulp-browser": "2.0.0",
+    "npmts": "5.0.3"
   }
 }
