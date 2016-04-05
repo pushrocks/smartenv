@@ -1,9 +1,7 @@
 /// <reference path="../ts/typings/main.d.ts" />
 var smartenv = require("../dist/index.js");
 var beautylog = require("beautylog");
-beautylog.info("Now testing the smartenv module");
 smartenv.printEnv();
-beautylog.info("Now testing the smartenv module");
 
 //test smartenv.obs.add
 smartenv.obs.add("myTestObject",{key1:"Peter"});
