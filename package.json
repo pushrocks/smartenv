@@ -25,7 +25,7 @@
     "lodash": "^4.8.1",
     "q": "^1.4.1"
   },
-  "devDependenies": {
+  "devDependencies": {
     "npmts": "^5.0.3"
   }
 }
