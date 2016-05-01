@@ -1,11 +1,14 @@
 /// <reference path="typings/main.d.ts" />
 
-import environment = require("./smartenv.environment");
-import objectstorage = require("./smartenv.objectstorage");
+import * as plugins from "./smartenv.plugins";
+import * as classes from "./smartenv.classes";
+import * as SmartenvEnvironment from "./smartenv.environment";
+import * as SmartenvObjectstorage from "./smartenv.objectstorage";
 
-var smartenv:any = {}; //create smartenv object
-smartenv.getEnv = environment.getEnv;
-smartenv.printEnv = environment.printEnv;
-smartenv.obs = objectstorage.obs;
+var smartenv = {
+    getEnv: SmartenvEnvironment.getEnv,
+    printEnv: SmartenvEnvironment.printEnv,
+    obs: SmartenvObjectstorage.obs
+}; //create smartenv object
 
 export = smartenv;
