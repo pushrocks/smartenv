@@ -1,7 +1,4 @@
 {
   "mode":"default",
-  "coverageTreshold":75,
-  "tsOptions": {
-    "target": "ES5"
-  }
+  "coverageTreshold":75
 }
