@@ -1,7 +1,8 @@
-/// <reference path="typings/main.d.ts" />
-var plugins = {
-    Q: require("q"),
-    _: require("lodash")
-};
+import 'typings-global'
+import * as Q from 'q'
+import * as _ from 'lodash'
 
-export = plugins;
+export {
+    Q,
+    _
+}

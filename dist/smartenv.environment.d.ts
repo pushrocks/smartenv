@@ -1,4 +1,4 @@
-import classes = require("./smartenv.classes");
+import * as classes from './smartenv.classes';
 /**
  * returns the environment
  * @returns {Environment}

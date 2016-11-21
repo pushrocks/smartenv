@@ -1,3 +1,3 @@
-declare var smartenv: any;
-declare var beautylog: any;
-declare var key2: string;
+declare let smartenv: any;
+declare let beautylog: any;
+declare let key2: string;

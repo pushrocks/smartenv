@@ -1,9 +1,7 @@
 "use strict";
-/// <reference path="typings/main.d.ts" />
-var plugins = {
-    Q: require("q"),
-    _: require("lodash")
-};
-module.exports = plugins;
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNtYXJ0ZW52LnBsdWdpbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLDBDQUEwQztBQUMxQyxJQUFJLE9BQU8sR0FBRztJQUNWLENBQUMsRUFBRSxPQUFPLENBQUMsR0FBRyxDQUFDO0lBQ2YsQ0FBQyxFQUFFLE9BQU8sQ0FBQyxRQUFRLENBQUM7Q0FDdkIsQ0FBQztBQUVGLGlCQUFTLE9BQU8sQ0FBQyIsImZpbGUiOiJzbWFydGVudi5wbHVnaW5zLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8vIDxyZWZlcmVuY2UgcGF0aD1cInR5cGluZ3MvbWFpbi5kLnRzXCIgLz5cbnZhciBwbHVnaW5zID0ge1xuICAgIFE6IHJlcXVpcmUoXCJxXCIpLFxuICAgIF86IHJlcXVpcmUoXCJsb2Rhc2hcIilcbn07XG5cbmV4cG9ydCA9IHBsdWdpbnM7Il19
+require("typings-global");
+const Q = require("q");
+exports.Q = Q;
+const _ = require("lodash");
+exports._ = _;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic21hcnRlbnYucGx1Z2lucy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3RzL3NtYXJ0ZW52LnBsdWdpbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLDBCQUF1QjtBQUN2Qix1QkFBc0I7QUFJbEIsY0FBQztBQUhMLDRCQUEyQjtBQUl2QixjQUFDIn0=
