@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/pushrocks/smartenv",
   "dependencies": {
-    "@types/q": "x.x.x",
+    "@types/q": "0.x.x",
     "lodash": "^4.17.2",
     "q": "^1.4.1",
     "typings-global": "^1.0.14"
