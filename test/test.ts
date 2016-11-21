@@ -4,7 +4,7 @@ smartenv.printEnv()
 
 // test smartenv.obs.add
 smartenv.obs.add('myTestObject',{key1:'Peter'})
-smartenv.obs.add('myTestObject',{key1:'Klaus'}) //now trying to add a second
+smartenv.obs.add('myTestObject',{key1:'Klaus'}) // now trying to add a second
 smartenv.printEnv()
 beautylog.log(smartenv.obs.get('myTestObject').key1) // this should be Peter
 
