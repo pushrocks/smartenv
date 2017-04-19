@@ -1,8 +1,8 @@
-export declare var getEnvString: () => string;
-export declare var getUserAgentString: () => string;
-export declare var isNode: () => boolean;
-export declare var getNodeVersion: () => string;
-export declare var isBrowser: () => boolean;
-export declare var isCI: () => boolean;
-export declare var isC9: () => boolean;
-export declare var isTravis: () => boolean;
+export declare let getEnvString: () => string;
+export declare let getUserAgentString: () => string;
+export declare let isNode: () => boolean;
+export declare let getNodeVersion: () => string;
+export declare let isBrowser: () => boolean;
+export declare let isCI: () => boolean;
+export declare let isC9: () => boolean;
+export declare let isTravis: () => boolean;

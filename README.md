@@ -21,7 +21,7 @@ store things about your environment and let them travel across modules
 Install the package through npm
 
 ```
-npm install smartenv
+npm install smartenv --save
 ```
 
 ## Usage

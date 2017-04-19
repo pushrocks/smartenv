@@ -1,4 +1,4 @@
 import 'typings-global';
-import * as Q from 'q';
-import * as _ from 'lodash';
-export { Q, _ };
+import * as smartq from 'smartq';
+import * as lodash from 'lodash';
+export { smartq, lodash };

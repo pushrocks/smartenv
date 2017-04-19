@@ -1,5 +1,8 @@
 import * as smartenv from '../dist/index.js'
 import * as beautylog from 'beautylog'
+
+import { tap, expect } from 'tapbundle'
+
 smartenv.printEnv()
 
 // test smartenv.obs.add
