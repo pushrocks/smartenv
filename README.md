@@ -2,14 +2,15 @@
 store things about your environment and let them travel across modules
 
 ## Availabililty
-[![npm](https://push.rocks/assets/repo-button-npm.svg)](https://www.npmjs.com/package/smartenv)
-[![git](https://push.rocks/assets/repo-button-git.svg)](https://gitlab.com/pushrocks/smartenv)
-[![git](https://push.rocks/assets/repo-button-mirror.svg)](https://github.com/pushrocks/smartenv)
-[![docs](https://push.rocks/assets/repo-button-docs.svg)](https://pushrocks.gitlab.io/smartenv/)
+[![npm](https://pushrocks.gitlab.io/assets/repo-button-npm.svg)](https://www.npmjs.com/package/smartenv)
+[![git](https://pushrocks.gitlab.io/assets/repo-button-git.svg)](https://GitLab.com/pushrocks/smartenv)
+[![git](https://pushrocks.gitlab.io/assets/repo-button-mirror.svg)](https://github.com/pushrocks/smartenv)
+[![docs](https://pushrocks.gitlab.io/assets/repo-button-docs.svg)](https://pushrocks.gitlab.io/smartenv/)
 
 ## Status for master
-[![build status](https://gitlab.com/pushrocks/smartenv/badges/master/build.svg)](https://gitlab.com/pushrocks/smartenv/commits/master)
-[![coverage report](https://gitlab.com/pushrocks/smartenv/badges/master/coverage.svg)](https://gitlab.com/pushrocks/smartenv/commits/master)
+[![build status](https://GitLab.com/pushrocks/smartenv/badges/master/build.svg)](https://GitLab.com/pushrocks/smartenv/commits/master)
+[![coverage report](https://GitLab.com/pushrocks/smartenv/badges/master/coverage.svg)](https://GitLab.com/pushrocks/smartenv/commits/master)
+[![npm downloads per month](https://img.shields.io/npm/dm/smartenv.svg)](https://www.npmjs.com/package/smartenv)
 [![Dependency Status](https://david-dm.org/pushrocks/smartenv.svg)](https://david-dm.org/pushrocks/smartenv)
 [![bitHound Dependencies](https://www.bithound.io/github/pushrocks/smartenv/badges/dependencies.svg)](https://www.bithound.io/github/pushrocks/smartenv/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/pushrocks/smartenv/badges/code.svg)](https://www.bithound.io/github/pushrocks/smartenv)
@@ -17,23 +18,12 @@ store things about your environment and let them travel across modules
 [![node](https://img.shields.io/badge/node->=%206.x.x-blue.svg)](https://nodejs.org/dist/latest-v6.x/docs/api/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-## Install
-Install the package through npm
-
-```
-npm install smartenv --save
-```
-
 ## Usage
+Use TypeScript for best in class instellisense.
 
-```javascript
-var smartenv = require("smartenv");
+For further information read the linked docs at the top of this README.
 
-smartenv.info(); //prints an output about your current environment and registered objects
-smartenv.register({akey:"a text"},"somevalue"); // register a new object
-smartenv.makeGlobal() // make smartenv available from gobal.smartenv
-smartenv.get("somevalue").akey; // returns "a text"
-smartenv.items.somevalue.akey; // also returns "a text"
-```
+> MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
+| By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
 
-[![npm](https://push.rocks/assets/repo-header.svg)](https://push.rocks)
+[![repo-footer](https://pushrocks.gitlab.io/assets/repo-footer.svg)](https://push.rocks)
