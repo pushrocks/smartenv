@@ -27,10 +27,6 @@
   version "0.0.27"
   resolved "https://registry.yarnpkg.com/@types/promises-a-plus/-/promises-a-plus-0.0.27.tgz#c64651134614c84b8f5d7114ce8901d36a609780"
 
-"@types/q@0.x.x":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.34.tgz#e5d3a54e7a56309d904cdf1dc34f61ac595fae2e"
-
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/align-text/-/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -968,7 +964,7 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0:
+lodash@^4.17.4, lodash@^4.2.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -1264,10 +1260,6 @@ punycode@^1.3.2, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-q@^1.4.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
-
 qs@~6.3.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.2.tgz#e75bd5f6e268122a2a0e0bda630b2550c166502c"
@@ -1443,12 +1435,11 @@ smartchai@^1.0.3:
     chai-string "^1.3.0"
 
 smartenv@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/smartenv/-/smartenv-2.0.0.tgz#ede4e2044efcf9bec318388bb1dab53024ee3d16"
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/smartenv/-/smartenv-2.0.4.tgz#fae4a8f1a0e1c0a7a5f4acc93942695b57076521"
   dependencies:
-    "@types/q" "0.x.x"
-    lodash "^4.17.2"
-    q "^1.4.1"
+    lodash "^4.17.4"
+    smartq "^1.1.1"
     typings-global "^1.0.14"
 
 smartq@^1.1.1:

@@ -6,20 +6,20 @@ export let obsItems: any = {}
  * Objectstorage allows easy sharing of objects within node
  */
 export let obs: any = {
-  add: function (paramNameArg = 'undefined', objectArg = 'undefined') {
-    if (paramNameArg === 'undefined') {
-      console.log('paramName is undefined')
+  add: (keyNameArg, objectArg) => {
+    if (!keyNameArg) {
+      console.log('keyName is undefined')
       return
     }
-    if (objectArg === 'undefined') {
+    if (!objectArg) {
       console.log('objectArg is undefined')
     }
-    if (typeof obsItems[ paramNameArg ] === 'undefined') {
-      obsItems[ paramNameArg ] = objectArg
+    if (!(obsItems[ keyNameArg ])) {
+      obsItems[ keyNameArg ] = objectArg
     } else {
       console.log('object is already present, so add operation has failed.')
     }
-    return obsItems[ paramNameArg ]
+    return obsItems[ keyNameArg ]
   },
   replace: function (paramNameArg, objectArg) {
     obsItems[ paramNameArg ] = objectArg

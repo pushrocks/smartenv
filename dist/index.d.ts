@@ -1,3 +1,3 @@
-import { getEnv, printEnv } from './smartenv.environment';
+import { getEnv, printEnv, getEnvVars } from './smartenv.export';
 import { obs } from './smartenv.objectstorage';
-export { getEnv, printEnv, obs };
+export { getEnv, getEnvVars, printEnv, obs };
