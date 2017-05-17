@@ -7,11 +7,14 @@ export let getEnvString = function (): string {
   }
 }
 
+/**
+ * gets the user agent string in a browser
+ */
 export let getUserAgentString = function (): string {
-  if (isBrowser()) {
+  if (isBrowser()) { // make sure we are in Browser
     return navigator.userAgent
   } else {
-    return undefined
+    return 'undefined'
   }
 }
 
@@ -29,22 +32,6 @@ export let isBrowser = function (): boolean {
 
 export let isCI = function () {
   if (process.env.CI) {
-    return true
-  } else {
-    return false
-  };
-}
-
-export let isC9 = function () {
-  if (process.env.C9_HOSTNAME) {
-    return true
-  } else {
-    return false
-  }
-}
-
-export let isTravis = function () {
-  if (process.env.TRAVIS) {
     return true
   } else {
     return false
