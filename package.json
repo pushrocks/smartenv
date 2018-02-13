@@ -22,12 +22,13 @@
   },
   "homepage": "https://gitlab.com/pushrocks/smartenv",
   "dependencies": {
-    "lodash": "^4.17.4",
-    "smartparam": "^0.1.1",
-    "smartq": "^1.1.1",
-    "typings-global": "^1.0.16"
+    "@types/node": "^9.4.4",
+    "lodash": "^4.17.5",
+    "smartparam": "^1.0.2",
+    "smartq": "^1.1.6"
   },
   "devDependencies": {
-    "tapbundle": "^1.0.5"
+    "@types/npm": "^2.0.29",
+    "tapbundle": "^1.1.8"
   }
 }

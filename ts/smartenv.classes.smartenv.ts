@@ -1,5 +1,4 @@
 import * as plugins from './smartenv.plugins'
-import helpers = require('./smartenv.envhelpers')
 
 // interfaces
 export interface IEnvObject {
@@ -8,28 +7,81 @@ export interface IEnvObject {
 }
 
 export class Smartenv {
-  runtimeEnv: string
-  isBrowser: boolean
-  userAgent: string
-  isNode: boolean
-  nodeVersion: string
-  isCI: boolean
-  constructor() {
-    this.runtimeEnv = helpers.getEnvString()
-    this.isBrowser = helpers.isBrowser()
-    this.userAgent = helpers.getUserAgentString()
-    this.isNode = helpers.isNode()
-    this.nodeVersion = helpers.getNodeVersion()
-    this.isCI = helpers.isCI()
-  };
+  
+  get runtimeEnv () {
+    if (typeof window !== 'undefined') {
+      return 'browser'
+    } else if (typeof process !== 'undefined') {
+      return 'node'
+    }
+  }
+
+  get isBrowser (): boolean {
+    return !this.isNode
+  }
+
+  get userAgent (): string {
+    if (this.isBrowser) { // make sure we are in Browser
+      return navigator.userAgent
+    } else {
+      return 'undefined'
+    }
+  }
+
+  get isNode ():boolean {
+    return this.runtimeEnv === 'node'
+  }
+
+  get nodeVersion ():string {
+    return process.version
+  }
+  
+  get isCI (): boolean {
+    if (this.isNode) {
+      if (process.env.CI) {
+        return true
+      } else {
+        return false
+      };
+    } else {
+      return false
+    }
+  }
+
+  async isMacAsync (): Promise<boolean> {
+    if(this.isNode) {
+      let os = await import('os')
+      return os.platform() === 'darwin'
+    } else {
+      return false
+    }
+  }
+  
+  async isWindowsAsync (): Promise<boolean> {
+    if(this.isNode) {
+      let os = await import('os')
+      return os.platform() === 'win32'
+    } else {
+      return false
+    }
+  }
+
+  async isLinuxAsync (): Promise<boolean> {
+    if(this.isNode) {
+      let os = await import('os')
+      return os.platform() === 'linux'
+    } else {
+      return false
+    }
+  }
 
   /**
    * get environment variables that fit the description
    */
-  async getEnvVars (regexArg: RegExp) {
-    let EnvironmentArray = []
-    // TODO: plugins.smartparam.forEachMinimatch()
-  }
+  // get envVars (regexArg: RegExp) {
+  //   let EnvironmentArray = []
+  //   // TODO: plugins.smartparam.forEachMinimatch()
+  // }
 
   /**
    * prints the environment to console

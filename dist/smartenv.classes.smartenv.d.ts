@@ -3,17 +3,18 @@ export interface IEnvObject {
     value: string;
 }
 export declare class Smartenv {
-    runtimeEnv: string;
-    isBrowser: boolean;
-    userAgent: string;
-    isNode: boolean;
-    nodeVersion: string;
-    isCI: boolean;
-    constructor();
+    readonly runtimeEnv: string;
+    readonly isBrowser: boolean;
+    readonly userAgent: string;
+    readonly isNode: boolean;
+    readonly nodeVersion: string;
+    readonly isCI: boolean;
+    isMacAsync(): Promise<boolean>;
+    isWindowsAsync(): Promise<boolean>;
+    isLinuxAsync(): Promise<boolean>;
     /**
      * get environment variables that fit the description
      */
-    getEnvVars(regexArg: RegExp): Promise<void>;
     /**
      * prints the environment to console
      */
