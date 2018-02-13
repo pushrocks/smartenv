@@ -12,8 +12,8 @@ tap.test('should print a overview to console', async () => {
 })
 
 tap.test('should get os', async () => {
+  let resultMac = await testEnv.isMacAsync()
   let resultLinux = await testEnv.isLinuxAsync()
-  let resultMac = await testEnv.isMacAsync
   let resultWindows = await testEnv.isWindowsAsync()
   const osModule = await import('os')
   if (resultMac) {
@@ -27,6 +27,12 @@ tap.test('should get os', async () => {
     console.log('platform is Windows!')
   }
   
+})
+
+tap.test('should state wether we are in CI', async () => {
+  if(process.env.CI) {
+    expect(testEnv.isCI).to.be.true()
+  }
 })
 
 tap.start()
