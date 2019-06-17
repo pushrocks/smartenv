@@ -1,96 +1,117 @@
-# gitzone standard
+# gitzone ci_default
 image: hosttoday/ht-docker-node:npmci
 
 cache:
   paths:
-  - .yarn/
+  - .npmci_cache/
   key: "$CI_BUILD_STAGE"
 
 stages:
-- mirror
 - security
 - test
 - release
-- trigger
-- pages
+- metadata
 
+# ====================
+# security stage
+# ====================
 mirror:
-  stage: mirror
+  stage: security
   script:
   - npmci git mirror
   tags:
   - docker
+  - notpriv
 
-security:
+snyk:
   stage: security
   script:
-    - npmci command yarn global add snyk
-    - npmci command yarn install --ignore-scripts
+    - npmci npm prepare
+    - npmci command npm install -g snyk
+    - npmci command npm install --ignore-scripts
     - npmci command snyk test
   tags:
   - docker
+  - notpriv
 
-testLEGACY:
-  stage: test
-  script:
-  - npmci node install legacy
-  - npmci npm install
-  - npmci npm test
-  coverage: /\d+.?\d+?\%\s*coverage/
-  tags:
-  - docker
-  allow_failure: true
+# ====================
+# test stage
+# ====================
 
 testLTS:
   stage: test
   script:
+  - npmci npm prepare
   - npmci node install lts
   - npmci npm install
   - npmci npm test
   coverage: /\d+.?\d+?\%\s*coverage/
   tags:
   - docker
+  - notpriv
     
 testSTABLE:
   stage: test
   script:
+  - npmci npm prepare
   - npmci node install stable
   - npmci npm install
   - npmci npm test
   coverage: /\d+.?\d+?\%\s*coverage/
   tags:
   - docker
+  - notpriv
 
 release:
   stage: release
   script:
-  - npmci npm prepare
+  - npmci node install stable
   - npmci npm publish
   only:
   - tags
   tags:
   - docker
+  - notpriv
+
+# ====================
+# metadata stage
+# ====================
+codequality:
+  stage: metadata
+  allow_failure: true
+  script:
+    - npmci command npm install -g tslint typescript
+    - npmci npm install
+    - npmci command "tslint -c tslint.json ./ts/**/*.ts"
+  tags:
+  - docker
+  - priv
 
 trigger:
-  stage: trigger
+  stage: metadata
   script:
   - npmci trigger
   only:
   - tags
   tags:
   - docker
+  - notpriv
 
 pages:
   image: hosttoday/ht-docker-node:npmci
-  stage: pages
+  stage: metadata
   script:
-    - npmci command yarn global add npmpage
-    - npmci command npmpage
+    - npmci command npm install -g @gitzone/tsdoc
+    - npmci npm prepare
+    - npmci npm install
+    - npmci command tsdoc
   tags:
     - docker
+    - notpriv
   only:
     - tags
   artifacts:
     expire_in: 1 week
     paths:
     - public
+  allow_failure: true

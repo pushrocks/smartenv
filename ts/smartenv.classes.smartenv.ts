@@ -1,77 +1,81 @@
-import * as plugins from './smartenv.plugins'
+import * as plugins from './smartenv.plugins';
+import * as interfaces from './interfaces';
 
 // interfaces
 export interface IEnvObject {
-  name: string
-  value: string
+  name: string;
+  value: string;
 }
 
+/**
+ * Smartenv class that makes it easy
+ */
 export class Smartenv {
-  
-  get runtimeEnv () {
+  get runtimeEnv() {
     if (typeof window !== 'undefined') {
-      return 'browser'
+      return 'browser';
     } else if (typeof process !== 'undefined') {
-      return 'node'
+      return 'node';
     }
   }
 
-  get isBrowser (): boolean {
-    return !this.isNode
+  get isBrowser(): boolean {
+    return !this.isNode;
   }
 
-  get userAgent (): string {
-    if (this.isBrowser) { // make sure we are in Browser
-      return navigator.userAgent
+  get userAgent(): string {
+    if (this.isBrowser) {
+      // make sure we are in Browser
+      return navigator.userAgent;
     } else {
-      return 'undefined'
+      return 'undefined';
     }
   }
 
-  get isNode ():boolean {
-    return this.runtimeEnv === 'node'
+  get isNode(): boolean {
+    return this.runtimeEnv === 'node';
   }
 
-  get nodeVersion ():string {
-    return process.version
+  get nodeVersion(): string {
+    return process.version;
   }
-  
-  get isCI (): boolean {
+
+  get isCI(): boolean {
     if (this.isNode) {
       if (process.env.CI) {
-        return true
+        return true;
       } else {
-        return false
-      };
+        return false;
+      }
     } else {
-      return false
+      return false;
     }
   }
 
-  async isMacAsync (): Promise<boolean> {
-    if(this.isNode) {
-      let os = await import('os')
-      return os.platform() === 'darwin'
+  async isMacAsync(): Promise<boolean> {
+    if (this.isNode) {
+      let os = await import('os');
+      return os.platform() === 'darwin';
     } else {
-      return false
-    }
-  }
-  
-  async isWindowsAsync (): Promise<boolean> {
-    if(this.isNode) {
-      let os = await import('os')
-      return os.platform() === 'win32'
-    } else {
-      return false
+      return false;
     }
   }
 
-  async isLinuxAsync (): Promise<boolean> {
-    if(this.isNode) {
-      let os = await import('os')
-      return os.platform() === 'linux'
+  async isWindowsAsync(): Promise<boolean> {
+    if (this.isNode) {
+      let os = await import('os');
+      return os.platform() === 'win32';
     } else {
-      return false
+      return false;
+    }
+  }
+
+  async isLinuxAsync(): Promise<boolean> {
+    if (this.isNode) {
+      let os = await import('os');
+      return os.platform() === 'linux';
+    } else {
+      return false;
     }
   }
 
@@ -86,14 +90,16 @@ export class Smartenv {
   /**
    * prints the environment to console
    */
-  async printEnv () {
+  async printEnv() {
     if (this.isNode) {
-      console.log('running on NODE')
-      let smartenvVersion = require('../package.json').version
-      console.log('node version is ' + this.nodeVersion + ' and smartenv version is ' + smartenvVersion)
+      console.log('running on NODE');
+      let smartenvVersion = require('../package.json').version;
+      console.log(
+        'node version is ' + this.nodeVersion + ' and smartenv version is ' + smartenvVersion
+      );
     } else {
-      console.log('running on BROWSER')
-      console.log('browser is ' + this.userAgent)
+      console.log('running on BROWSER');
+      console.log('browser is ' + this.userAgent);
     }
   }
 }

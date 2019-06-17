@@ -1,14 +1,22 @@
-node_modules/
-.settings/
-.idea/
+.nogit/
+
+# artifacts
 coverage/
-docs/
+public/
+pages/
 
-#npm devug
-npm-debug.log
+# installs
+node_modules/
 
-ts/*.js
-ts/*.js.map
-ts/typings/
+# caches
+.yarn/
+.cache/
+.rpt2_cache
 
-test/browser/browserified/
+# builds
+dist/
+dist_web/
+dist_serve/
+dist_ts_web/
+
+# custom

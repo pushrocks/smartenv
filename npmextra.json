@@ -1,10 +1,20 @@
 {
   "npmts": {
-    "coverageTreshold": 60 
+    "coverageTreshold": 60
   },
   "npmci": {
     "npmGlobalTools": [
       "npmts"
     ]
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "pushrocks",
+      "gitrepo": "smartenv",
+      "shortDescription": "store things about your environment and let them travel across modules",
+      "npmPackagename": "@pushrocks/smartenv",
+      "license": "MIT"
+    }
   }
 }

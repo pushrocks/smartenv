@@ -1,9 +1,4 @@
-import * as smartparam from 'smartparam'
-import * as smartq from 'smartq'
-import * as lodash from 'lodash'
+import * as smartparam from '@pushrocks/smartparam';
+import * as smartq from '@pushrocks/smartpromise';
 
-export {
-    lodash,
-    smartparam,
-    smartq
-}
+export { smartparam, smartq };
