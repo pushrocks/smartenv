@@ -1,11 +1,7 @@
 {
-  "npmts": {
-    "coverageTreshold": 60
-  },
   "npmci": {
-    "npmGlobalTools": [
-      "npmts"
-    ]
+    "npmGlobalTools": [],
+    "npmAccessLevel": "public"
   },
   "gitzone": {
     "module": {
