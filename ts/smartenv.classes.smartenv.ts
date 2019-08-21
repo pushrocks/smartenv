@@ -11,7 +11,7 @@ export interface IEnvObject {
  * Smartenv class that makes it easy
  */
 export class Smartenv {
-  get runtimeEnv() {
+  public get runtimeEnv() {
     if (typeof window !== 'undefined') {
       return 'browser';
     } else if (typeof process !== 'undefined') {
@@ -19,11 +19,11 @@ export class Smartenv {
     }
   }
 
-  get isBrowser(): boolean {
+  public get isBrowser(): boolean {
     return !this.isNode;
   }
 
-  get userAgent(): string {
+  public get userAgent(): string {
     if (this.isBrowser) {
       // make sure we are in Browser
       return navigator.userAgent;
@@ -32,15 +32,15 @@ export class Smartenv {
     }
   }
 
-  get isNode(): boolean {
+  public get isNode(): boolean {
     return this.runtimeEnv === 'node';
   }
 
-  get nodeVersion(): string {
+  public get nodeVersion(): string {
     return process.version;
   }
 
-  get isCI(): boolean {
+  public get isCI(): boolean {
     if (this.isNode) {
       if (process.env.CI) {
         return true;
@@ -52,27 +52,27 @@ export class Smartenv {
     }
   }
 
-  async isMacAsync(): Promise<boolean> {
+  public async isMacAsync(): Promise<boolean> {
     if (this.isNode) {
-      let os = await import('os');
+      const os = await import('os');
       return os.platform() === 'darwin';
     } else {
       return false;
     }
   }
 
-  async isWindowsAsync(): Promise<boolean> {
+  public async isWindowsAsync(): Promise<boolean> {
     if (this.isNode) {
-      let os = await import('os');
+      const os = await import('os');
       return os.platform() === 'win32';
     } else {
       return false;
     }
   }
 
-  async isLinuxAsync(): Promise<boolean> {
+  public async isLinuxAsync(): Promise<boolean> {
     if (this.isNode) {
-      let os = await import('os');
+      const os = await import('os');
       return os.platform() === 'linux';
     } else {
       return false;
@@ -90,10 +90,10 @@ export class Smartenv {
   /**
    * prints the environment to console
    */
-  async printEnv() {
+  public async printEnv() {
     if (this.isNode) {
       console.log('running on NODE');
-      let smartenvVersion = require('../package.json').version;
+      const smartenvVersion = require('../package.json').version;
       console.log(
         'node version is ' + this.nodeVersion + ' and smartenv version is ' + smartenvVersion
       );
