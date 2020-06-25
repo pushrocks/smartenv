@@ -1,6 +1,6 @@
 {
   "name": "@pushrocks/smartenv",
-  "version": "4.0.8",
+  "version": "4.0.9",
   "description": "store things about your environment and let them travel across modules",
   "main": "dist_ts/index.js",
   "typings": "dist_ts/index.d.ts",
