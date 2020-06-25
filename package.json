@@ -25,11 +25,11 @@
   "dependencies": {
     "@pushrocks/smartparam": "^1.1.6",
     "@pushrocks/smartpromise": "^3.0.6",
-    "@types/node": "^14.0.14",
-    "is-wsl": "^2.2.0"
+    "@types/node": "^14.0.14"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.24",
+    "@gitzone/tsbundle": "^1.0.69",
     "@gitzone/tsrun": "^1.2.12",
     "@gitzone/tstest": "^1.0.33",
     "@pushrocks/tapbundle": "^3.2.1",

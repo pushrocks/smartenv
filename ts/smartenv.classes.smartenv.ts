@@ -11,6 +11,18 @@ export interface IEnvObject {
  * Smartenv class that makes it easy
  */
 export class Smartenv {
+  public getSafeNodeModule(moduleNameArg: string) {
+    // tslint:disable-next-line: function-constructor
+    return new Function(
+      'exports',
+      'require',
+      'module',
+      '__filename',
+      '__dirname',
+      `return require('${moduleNameArg}')`
+      )(exports,require,module,__filename,__dirname);
+  }
+
   public get runtimeEnv() {
     if (typeof window !== 'undefined') {
       return 'browser';
@@ -36,10 +48,6 @@ export class Smartenv {
     return this.runtimeEnv === 'node';
   }
 
-  public get isWsl(): boolean {
-    return plugins.isWsl;
-  }
-
   public get nodeVersion(): string {
     return process.version;
   }
@@ -58,7 +66,7 @@ export class Smartenv {
 
   public async isMacAsync(): Promise<boolean> {
     if (this.isNode) {
-      const os = await import('os');
+      const os = this.getSafeNodeModule('os');
       return os.platform() === 'darwin';
     } else {
       return false;
@@ -67,7 +75,7 @@ export class Smartenv {
 
   public async isWindowsAsync(): Promise<boolean> {
     if (this.isNode) {
-      const os = await import('os');
+      const os = this.getSafeNodeModule('os');
       return os.platform() === 'win32';
     } else {
       return false;
@@ -76,7 +84,7 @@ export class Smartenv {
 
   public async isLinuxAsync(): Promise<boolean> {
     if (this.isNode) {
-      const os = await import('os');
+      const os = this.getSafeNodeModule('os');
       return os.platform() === 'linux';
     } else {
       return false;
