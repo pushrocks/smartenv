@@ -2,11 +2,11 @@
   "name": "@pushrocks/smartenv",
   "version": "4.0.7",
   "description": "store things about your environment and let them travel across modules",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist_ts/index.js",
+  "typings": "dist_ts/index.d.ts",
   "scripts": {
     "test": "(tstest test/ --web)",
-    "build": "(tsbuild --web)",
+    "build": "(tsbuild --web && tsbundle npm)",
     "testbrowser": "(npm test) && (node testbrowser.js)"
   },
   "repository": {
@@ -23,27 +23,28 @@
   },
   "homepage": "https://gitlab.com/pushrocks/smartenv",
   "dependencies": {
-    "@pushrocks/smartparam": "^1.0.4",
-    "@pushrocks/smartpromise": "^3.0.2",
-    "@types/node": "^12.7.2"
+    "@pushrocks/smartparam": "^1.1.6",
+    "@pushrocks/smartpromise": "^3.0.6",
+    "@types/node": "^14.0.14"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.11",
-    "@gitzone/tsrun": "^1.2.8",
-    "@gitzone/tstest": "^1.0.24",
-    "@pushrocks/tapbundle": "^3.0.11",
-    "@types/npm": "^2.0.29",
-    "tslint": "^5.19.0",
+    "@gitzone/tsbuild": "^2.1.24",
+    "@gitzone/tsrun": "^1.2.12",
+    "@gitzone/tstest": "^1.0.33",
+    "@pushrocks/tapbundle": "^3.2.1",
+    "@types/npm": "^2.0.31",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
   "private": false,
   "files": [
-    "ts/*",
-    "ts_web/*",
-    "dist/*",
-    "dist_web/*",
-    "dist_ts_web/*",
-    "assets/*",
+    "ts/**/*",
+    "ts_web/**/*",
+    "dist/**/*",
+    "dist_*/**/*",
+    "dist_ts/**/*",
+    "dist_ts_web/**/*",
+    "assets/**/*",
     "cli.js",
     "npmextra.json",
     "readme.md"
