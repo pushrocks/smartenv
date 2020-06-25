@@ -36,6 +36,10 @@ export class Smartenv {
     return this.runtimeEnv === 'node';
   }
 
+  public get isWsl(): boolean {
+    return plugins.isWsl;
+  }
+
   public get nodeVersion(): string {
     return process.version;
   }
