@@ -11,6 +11,21 @@ export interface IEnvObject {
  * Smartenv class that makes it easy
  */
 export class Smartenv {
+  public async getEnvAwareModule(optionsArg: {
+    nodeModuleName: string;
+    webUrlArg: string;
+    getFunction: () => any;
+  }) {
+    if (this.isNode) {
+      const moduleResult = await  this.getSafeNodeModule(optionsArg.nodeModuleName);
+      return moduleResult;
+    } else if (this.isBrowser) {
+      const moduleResult = await this.getSafeWebModule(optionsArg.webUrlArg, optionsArg.getFunction);
+    } else {
+      console.error('platform for loading not supported by smartenv');
+    }
+  }
+
   public getSafeNodeModule<T = any>(moduleNameArg: string): T {
     if (!this.isNode) {
       console.error('You tried to load a node module in a wrong context');
@@ -28,7 +43,7 @@ export class Smartenv {
   }
 
   public loadedScripts: string[] = [];
-  public async getSafeWebModule(urlArg: string) {
+  public async getSafeWebModule(urlArg: string, getFunctionArg: () => any) {
     if (!this.isBrowser) {
       console.error('You tried to load a web module in a wrong context');
       return;
@@ -53,6 +68,7 @@ export class Smartenv {
       document.head.appendChild(script);
     }
     await done.promise;
+    return getFunctionArg();
   }
 
   public get runtimeEnv() {
