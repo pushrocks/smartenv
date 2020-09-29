@@ -140,14 +140,6 @@ export class Smartenv {
   }
 
   /**
-   * get environment variables that fit the description
-   */
-  // get envVars (regexArg: RegExp) {
-  //   let EnvironmentArray = []
-  //   // TODO: plugins.smartparam.forEachMinimatch()
-  // }
-
-  /**
    * prints the environment to console
    */
   public async printEnv() {
