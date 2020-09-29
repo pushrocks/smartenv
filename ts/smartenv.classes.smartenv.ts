@@ -12,6 +12,10 @@ export interface IEnvObject {
  */
 export class Smartenv {
   public getSafeNodeModule<T = any>(moduleNameArg: string): T {
+    if (!this.isNode) {
+      console.error('You tried to load a node module in a wrong context');
+      return;
+    }
     // tslint:disable-next-line: function-constructor
     return new Function(
       'exports',
@@ -21,6 +25,34 @@ export class Smartenv {
       '__dirname',
       `return require('${moduleNameArg}')`
     )(exports, require, module, __filename, __dirname);
+  }
+
+  public loadedScripts: string[] = [];
+  public async getSafeWebModule(urlArg: string) {
+    if (!this.isBrowser) {
+      console.error('You tried to load a web module in a wrong context');
+      return;
+    }
+    
+    if (this.loadedScripts.includes(urlArg)) {
+      return;
+    } else {
+      this.loadedScripts.push(urlArg);
+    }
+    
+    const done = plugins.smartpromise.defer();
+    if (globalThis.importScripts) {
+      globalThis.importScripts(urlArg);
+      done.resolve();
+    } else {
+      const script = document.createElement('script');
+      script.onload = () => {
+        done.resolve();
+      };
+      script.src = urlArg;
+      document.head.appendChild(script);
+    }
+    await done.promise;
   }
 
   public get runtimeEnv() {
