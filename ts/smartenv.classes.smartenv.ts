@@ -11,7 +11,7 @@ export interface IEnvObject {
  * Smartenv class that makes it easy
  */
 export class Smartenv {
-  public getSafeNodeModule(moduleNameArg: string) {
+  public getSafeNodeModule<T = any>(moduleNameArg: string): T {
     // tslint:disable-next-line: function-constructor
     return new Function(
       'exports',
@@ -20,7 +20,7 @@ export class Smartenv {
       '__filename',
       '__dirname',
       `return require('${moduleNameArg}')`
-      )(exports,require,module,__filename,__dirname);
+    )(exports, require, module, __filename, __dirname);
   }
 
   public get runtimeEnv() {
