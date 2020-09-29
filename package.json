@@ -30,7 +30,7 @@
     "@gitzone/tsbuild": "^2.1.25",
     "@gitzone/tsbundle": "^1.0.78",
     "@gitzone/tsrun": "^1.2.12",
-    "@gitzone/tstest": "^1.0.44",
+    "@gitzone/tstest": "^1.0.48",
     "@pushrocks/tapbundle": "^3.2.9",
     "@types/npm": "^2.0.31",
     "tslint": "^6.1.3",
