@@ -50,7 +50,7 @@ export class Smartenv {
     }
     
     if (this.loadedScripts.includes(urlArg)) {
-      return;
+      return getFunctionArg();
     } else {
       this.loadedScripts.push(urlArg);
     }
